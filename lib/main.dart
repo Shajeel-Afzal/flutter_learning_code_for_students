@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,11 +9,79 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: MyHomePage2(),
+      home: DemoStateManagement(),
+    );
+  }
+}
+
+class DemoStateManagement extends StatefulWidget {
+  @override
+  _DemoStateManagementState createState() => _DemoStateManagementState();
+}
+
+class _DemoStateManagementState extends State<DemoStateManagement> {
+  int num = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("State management"),
+      ),
+      body: Center(
+        child: Column(children: <Widget>[
+          Text("Number: " + num.toString()),
+          Text("Randome!")
+        ],),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            num++;
+            print(num);
+          });
+        },
+      ),
+    );
+  }
+}
+
+class RowDemoWidget extends StatefulWidget {
+  @override
+  _RowDemoWidgetState createState() => _RowDemoWidgetState();
+}
+
+class _RowDemoWidgetState extends State<RowDemoWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Container(
+        decoration: BoxDecoration(color: Colors.yellow),
+        child: Column(
+          children: <Widget>[
+            Text(
+              'This is Google Fonts',
+              style: GoogleFonts.acme(
+                textStyle: Theme.of(context).textTheme.display1,
+                fontSize: 48,
+                fontWeight: FontWeight.w700,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            Icon(
+              FontAwesomeIcons.code,
+              size: 200,
+              color: Colors.purple,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
