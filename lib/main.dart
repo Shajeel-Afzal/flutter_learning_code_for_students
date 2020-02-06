@@ -1,3 +1,4 @@
+import 'package:erozgaar_app/EmailPasswordLoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: DemoStateManagement(),
+      home: EmailPasswordLoginScreen(),
     );
   }
 }
@@ -34,10 +35,12 @@ class _DemoStateManagementState extends State<DemoStateManagement> {
         title: Text("State management"),
       ),
       body: Center(
-        child: Column(children: <Widget>[
-          Text("Number: " + num.toString()),
-          Text("Randome!")
-        ],),
+        child: Column(
+          children: <Widget>[
+            Text("Number: " + num.toString()),
+            Text("Randome!")
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
