@@ -1,4 +1,6 @@
 import 'package:erozgaar_app/EmailPasswordLoginScreen.dart';
+import 'package:erozgaar_app/FacebookStroyDemo.dart';
+import 'package:erozgaar_app/ListViewDemo.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
-      home: EmailPasswordLoginScreen(),
+      home: FacebookStoryDemo(),
     );
   }
 }

@@ -1,4 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+class TestWidget extends StatefulWidget {
+  @override
+  _TestWidgetState createState() => _TestWidgetState();
+}
+
+class _TestWidgetState extends State<TestWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
 
 class EmailPasswordLoginScreen extends StatefulWidget {
   @override
@@ -7,7 +21,13 @@ class EmailPasswordLoginScreen extends StatefulWidget {
 }
 
 class _EmailPasswordLoginScreenState extends State<EmailPasswordLoginScreen> {
-  bool _showPassword = true;
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool _hidePassword = true;
+  String _email;
+
+  String _password;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +43,7 @@ class _EmailPasswordLoginScreenState extends State<EmailPasswordLoginScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Form(
+                  key: _formKey,
                   child: Column(
                     children: <Widget>[
                       Text("Login Information"),
@@ -30,6 +51,9 @@ class _EmailPasswordLoginScreenState extends State<EmailPasswordLoginScreen> {
                         height: 20.0,
                       ),
                       TextFormField(
+                        onSaved: (value){
+                          _email = value;
+                        },
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Email",
@@ -39,13 +63,16 @@ class _EmailPasswordLoginScreenState extends State<EmailPasswordLoginScreen> {
                         height: 20,
                       ),
                       TextFormField(
-                        obscureText: _showPassword,
+                        onSaved: (value){
+                          _password = value;
+                        },
+                        obscureText: _hidePassword,
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
-                            icon: _showPassword ? Icon(Icons.visibility) : Icon(Icons.visibility_off),
+                            icon: _hidePassword ? Icon(Icons.visibility) : Icon(Icons.visibility_off),
                             onPressed: () {
                               setState(() {
-                                _showPassword = !_showPassword;
+                                _hidePassword = !_hidePassword;
                               });
                             },
                           ),
@@ -61,7 +88,9 @@ class _EmailPasswordLoginScreenState extends State<EmailPasswordLoginScreen> {
                         children: <Widget>[
                           Text("Forgot Password?"),
                           RaisedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              _doSignup();
+                            },
                             child: Text("Login"),
                           ),
                         ],
@@ -76,4 +105,42 @@ class _EmailPasswordLoginScreenState extends State<EmailPasswordLoginScreen> {
       ),
     );
   }
+
+  _doSignup() async {
+    var formCurrentState = _formKey.currentState;
+    formCurrentState.save();
+
+    _email = _email.trim();
+
+    print(_email);
+    print(_password);
+
+    try{
+      AuthResult authResult = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: _email, password: _password);
+
+      print(authResult);
+    } catch(e){
+      print(e);
+    } finally{
+      print("finally!");
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
