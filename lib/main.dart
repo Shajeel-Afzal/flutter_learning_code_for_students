@@ -1,5 +1,8 @@
+import 'package:erozgaar_app/BottomNavigationBarDemo.dart';
+import 'package:erozgaar_app/Drawer.dart';
 import 'package:erozgaar_app/EmailPasswordLoginScreen.dart';
 import 'package:erozgaar_app/FacebookStroyDemo.dart';
+import 'package:erozgaar_app/GridViewDemo.dart';
 import 'package:erozgaar_app/ListViewDemo.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,9 +18,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.green,
       ),
-      home: FacebookStoryDemo(),
+      home: DrawerDemo(),
     );
   }
 }
