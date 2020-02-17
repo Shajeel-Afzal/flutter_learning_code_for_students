@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>erozgaar_app</title>
+    <meta charset="UTF-8">
+    <title>erozgaar_app</title>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-firestore.js"></script>
+
 </head>
 <body>
-  <script src="main.dart.js" type="application/javascript"></script>
+<script src="main.dart.js" type="application/javascript"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyA7O8E8R_Hsj468NkFu_osiQa_gEC4VRB8",
+    authDomain: "appsol360-trainings.firebaseapp.com",
+    databaseURL: "https://appsol360-trainings.firebaseio.com",
+    projectId: "appsol360-trainings",
+    storageBucket: "appsol360-trainings.appspot.com",
+    messagingSenderId: "728136253746",
+    appId: "1:728136253746:web:38dbd29520cc61ae0f972b",
+    measurementId: "G-2NQ9NPY0T5"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+
+</script>
+
+
+
 </body>
 </html>

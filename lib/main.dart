@@ -4,9 +4,9 @@ import 'package:erozgaar_app/EmailPasswordLoginScreen.dart';
 import 'package:erozgaar_app/FacebookStroyDemo.dart';
 import 'package:erozgaar_app/GridViewDemo.dart';
 import 'package:erozgaar_app/ListViewDemo.dart';
+import 'package:erozgaar_app/TasksListScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: DrawerDemo(),
+      home: TasksListScreen(),
     );
   }
 }
@@ -75,12 +75,6 @@ class _RowDemoWidgetState extends State<RowDemoWidget> {
           children: <Widget>[
             Text(
               'This is Google Fonts',
-              style: GoogleFonts.acme(
-                textStyle: Theme.of(context).textTheme.display1,
-                fontSize: 48,
-                fontWeight: FontWeight.w700,
-                fontStyle: FontStyle.italic,
-              ),
             ),
             Icon(
               FontAwesomeIcons.code,

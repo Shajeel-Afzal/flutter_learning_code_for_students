@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,6 @@ class _TestWidgetState extends State<TestWidget> {
   }
 }
 
-
 class EmailPasswordLoginScreen extends StatefulWidget {
   @override
   _EmailPasswordLoginScreenState createState() =>
@@ -21,7 +21,6 @@ class EmailPasswordLoginScreen extends StatefulWidget {
 }
 
 class _EmailPasswordLoginScreenState extends State<EmailPasswordLoginScreen> {
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool _hidePassword = true;
@@ -51,7 +50,7 @@ class _EmailPasswordLoginScreenState extends State<EmailPasswordLoginScreen> {
                         height: 20.0,
                       ),
                       TextFormField(
-                        onSaved: (value){
+                        onSaved: (value) {
                           _email = value;
                         },
                         decoration: InputDecoration(
@@ -63,13 +62,15 @@ class _EmailPasswordLoginScreenState extends State<EmailPasswordLoginScreen> {
                         height: 20,
                       ),
                       TextFormField(
-                        onSaved: (value){
+                        onSaved: (value) {
                           _password = value;
                         },
                         obscureText: _hidePassword,
                         decoration: InputDecoration(
                           suffixIcon: IconButton(
-                            icon: _hidePassword ? Icon(Icons.visibility) : Icon(Icons.visibility_off),
+                            icon: _hidePassword
+                                ? Icon(Icons.visibility)
+                                : Icon(Icons.visibility_off),
                             onPressed: () {
                               setState(() {
                                 _hidePassword = !_hidePassword;
@@ -115,32 +116,20 @@ class _EmailPasswordLoginScreenState extends State<EmailPasswordLoginScreen> {
     print(_email);
     print(_password);
 
-    try{
-      AuthResult authResult = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: _email, password: _password);
+    Firestore.instance
+        .collection("users")
+        .document()
+        .setData({"email": _email, "password": _password});
 
-      print(authResult);
-    } catch(e){
-      print(e);
-    } finally{
-      print("finally!");
-    }
+//    try{
+//      AuthResult authResult = await FirebaseAuth.instance
+//          .createUserWithEmailAndPassword(email: _email, password: _password);
+//
+//      print(authResult);
+//    } catch(e){
+//      print(e);
+//    } finally{
+//      print("finally!");
+//    }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

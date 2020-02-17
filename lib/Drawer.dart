@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class DrawerDemo extends StatefulWidget {
@@ -6,6 +7,19 @@ class DrawerDemo extends StatefulWidget {
 }
 
 class _DrawerDemoState extends State<DrawerDemo> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    print("initState Function Called of DrawerDemo!");
+
+    Firestore.instance
+        .collection("users")
+        .document()
+        .setData({"name": "Android Studio"});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
