@@ -5,6 +5,7 @@ import 'package:erozgaar_app/FacebookStroyDemo.dart';
 import 'package:erozgaar_app/GridViewDemo.dart';
 import 'package:erozgaar_app/ListViewDemo.dart';
 import 'package:erozgaar_app/TasksListScreen.dart';
+import 'package:erozgaar_app/weather_app_demo/WeatherInfoScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: TasksListScreen(),
+      home: WeatherInfoScreen(),
     );
   }
 }
